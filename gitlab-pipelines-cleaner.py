@@ -45,9 +45,9 @@ if __name__ == "__main__":
             logging.info('Done.')
             if len(config['gitlab']['groups']) == 0 and len(config['gitlab']['projects']) == 0:
                 logging.info('Going through all groups and projects')
-                projects = gl.projects.list()
+                projects = gl.projects.list(all=True)
                 for project in projects:
-                    pipelines = project.pipelines.list()
+                    pipelines = project.pipelines.list(all=True)
                     if len(config['gitlab']['status_autodelete'])>0:
                         pipe = []
                         for pipeline in pipelines:
@@ -66,17 +66,17 @@ if __name__ == "__main__":
                         pipelines.pop(len(pipelines)-1)
             else:
                 if len(config['gitlab']['groups'])>0:
-                    groups = gl.groups.list()
+                    groups = gl.groups.list(all=True)
                     logging.info('Going through user defined group list')
                     for group in groups:
                         if group.name in config['gitlab']['groups']:
-                            projects = group.projects.list()
+                            projects = group.projects.list(all=True)
                             pipelines = []
                             if len(config['gitlab']['projects']):
                                 logging.info('Going through user defined project list')
                                 for project in projects:
                                     if project.name in config['gitlab']['projects']:
-                                        pipelines = project.pipelines.list()
+                                        pipelines = project.pipelines.list(all=True)
                                         if len(config['gitlab']['status_autodelete'])>0:
                                             pipe = []
                                             for pipeline in pipelines:
@@ -96,7 +96,7 @@ if __name__ == "__main__":
                             else:
                                 logging.info('Going through all the project for the specified group')
                                 for project in projects:
-                                    pipelines = project.pipelines.list()
+                                    pipelines = project.pipelines.list(all=True)
                                     if len(config['gitlab']['status_autodelete'])>0:
                                         pipe = []
                                         for pipeline in pipelines:
@@ -115,9 +115,9 @@ if __name__ == "__main__":
                                         pipelines.pop(len(pipelines)-1)
                 if len(config['gitlab']['projects'])>0:
                     logging.info('Going through user defined group list')
-                    for project in gl.projects.list():
+                    for project in gl.projects.list(all=True):
                         if project.name in config['gitlab']['projects']:
-                            pipelines = project.pipelines.list()
+                            pipelines = project.pipelines.list(all=True)
                             if len(config['gitlab']['status_autodelete'])>0:
                                 pipe = []
                                 for pipeline in pipelines:
