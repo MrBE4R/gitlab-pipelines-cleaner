@@ -86,7 +86,7 @@ See <https://docs.gitlab.com/ee/api/pipelines.html> for an updated list of pipel
 ## Built With
 
 * [Python](https://www.python.org/)
-* [python-ldap](https://www.python-ldap.org/en/latest/)
+* [python-gitlab](https://python-gitlab.readthedocs.io/en/stable/)
 
 ## Contributing
 
