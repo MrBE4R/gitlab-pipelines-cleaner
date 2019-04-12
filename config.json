@@ -1,0 +1,13 @@
+{
+  "log_level": "INFO",
+  "log":"/tmp/gitlab-pipelines-cleaner.log",
+  "gitlab": {
+    "api": "",
+    "private_token": "",
+    "oauth_token": "",
+    "groups": [],
+    "projects": [],
+    "status_autodelete":[],
+    "to_keep": 1
+  }
+}
