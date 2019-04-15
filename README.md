@@ -13,7 +13,7 @@ This project has been tested on CentOS 7.6 with GitLab 11.5.* and OpenLDAP and A
 ```
 Python        : 3.4.9
 pip3          : 8.1.2
-python-gitlab : 1.6.0
+python-gitlab : 1.8.0
 ```
 
 ### Installing
@@ -76,12 +76,16 @@ How to configure config.json
 ```
 You should use ```private_token``` or ```oauth_token``` but not both. Check [the gitlab documentation](https://docs.gitlab.com/ce/user/profile/personal_access_tokens.html#creating-a-personal-access-token) for how to generate the personal access token.
 
+You can use ```groups``` or ```project``` but not both. This is to avoid passing multiple time on projects.
+
 ```status_autodelete``` can be a list with the following status ```running```, ```pending```, ```success```, ```failed```, ```canceled```, ```skipped``` .
-See <https://docs.gitlab.com/ee/api/pipelines.html> for an updated list of pipeline status
+See <https://docs.gitlab.com/ee/api/pipelines.html> for an updated list of pipeline status.
+
+By default we keep one pipeline for each status.
 ## TODO
 
 - [ ] Implement time based selection (cleanup only if older than XXX)
-- [ ] Make to_keep work for each status in status_autodelete
+- [x] Make to_keep work for each status in status_autodelete
 - [ ] Your suggestions
 ## Built With
 
