@@ -51,6 +51,7 @@ if __name__ == "__main__":
                 logging.info('Going through all groups and projects')
                 projects = gl.projects.list(all=True)
                 for project in projects:
+                    logging.info(' Working on project %s' % str(project.name))
                     pipelines_to_delete = {'running': [], 'pending': [], 'success': [], 'failed': [], 'canceled': [], 'skipped': []}
                     pipelines = project.pipelines.list(all=True)
                     if len(config['gitlab']['status_autodelete']) > 0:
